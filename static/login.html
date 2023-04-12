@@ -45,8 +45,8 @@
     <div class='center' style='width:315px;padding:4px'>
       <center style="font-family:monospace">A-ENGINE now needs a password for protection against the district. Contact the owner of A-ENGINE to get an access key. Thank you for visiting.
         <br></br>
-      <script>var maintenance = true;</script>
-      <input type=password id="access" name = 'verify' placeholder="Access Key" onchange="if (maintenance === false) { access(); } else { alert('A-ENGINE is under maintenance! Check again in a day or two.'); }"><br>
+
+      <input type=password id="access" name = 'verify' placeholder="Access Key" onchange="access()"><br>
       </center>
       <script>
         sessionStorage.setItem("verified", 'false');
@@ -55,8 +55,10 @@
 
         const adminHash = "cyrb53('a') -> 4413594719508086";
         const joHash = "cyrb53('a') -> 7409568508203460"
+        var maintenance = true;
 
         function access() {
+          if (maintenance === false) {
           let input = document.getElementById("access").value;
 
 
@@ -91,7 +93,9 @@
             document.getElementsByName('verify')[0].placeholder='Incorrect password!';
           }
         }
-
+        } else {
+          alert('A-ENGINE is undergoing maintenance! Please check again soon to use A-ENGINE.'); 
+        }
 
       </script>
     </div>
