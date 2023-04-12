@@ -58,7 +58,6 @@
         var maintenance = true;
 
         function access() {
-          if (maintenance === false) {
           let input = document.getElementById("access").value;
 
 
@@ -87,14 +86,15 @@
           }
 
           if (inputHash == verifyHash) {
-            home();
+            if (maintenance === false) {
+              home();
+            } else {
+              alert('A-ENGINE is undergoing maintenance! Please check again soon to use A-ENGINE.'); 
+            }
           } else {
             document.getElementById('access').value = '';
             document.getElementsByName('verify')[0].placeholder='Incorrect password!';
           }
-        }
-        } else {
-          alert('A-ENGINE is undergoing maintenance! Please check again soon to use A-ENGINE.'); 
         }
 
       </script>
