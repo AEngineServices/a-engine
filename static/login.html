@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>window.history.replaceState(null, document.title, "/");</script>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Login to iframe</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKpJREFUOE9jZGBg+M9AAWCkmgEwZ4BMBIH/DAxGUCYviGZkYDgIFVeF8m9DaYgXqGHAZ6iJYBth4D8DgzeU/QVKw9SdQ3cBxQY8RbaJkYFBHeq1SKhNy7FFFjwW/jMwUGYAkp9PQ200hbogFSrHB6U/QeVno4QBxQb8Z2DYhBbvjmix0QC1EUzDAHIYUGzAUmQXMDAwgKMVC/0V2SXILqDMAGxxTIwYxbkRAORwTgGX++ZOAAAAAElFTkSuQmCC">
+  <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+  <style>
+    .full {
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      position: absolute;
+      overflow: hidden;
+    }
+
+    .center {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    input {
+      border: 1px solid rgb(127, 127, 127);
+      border-width: 1px;
+      border-radius: 1px
+    }
+
+    *:focus {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body style='overflow:hidden;padding:0px;visibilty:hidden'>
+  <div class='full'>
+    <div class='center' style='width:315px;padding:4px'>
+      <center style="font-family:monospace">A-ENGINE now needs a password for protection against the district. Contact the owner of A-ENGINE to get an access key. Thank you for visiting.
+        <br></br>
+
+      <input type=password id="access" name = 'verify' placeholder="Access Key" onchange="access()"><br>
+      </center>
+      <script>
+        sessionStorage.setItem("verified", 'false');
+        var verified = sessionStorage.getItem("verified");
+        var verifyHash = "cyrb53('a') -> 1624779604410809";
+
+        const adminHash = "cyrb53('a') -> 4413594719508086";
+        const joHash = "cyrb53('a') -> 7409568508203460"
+
+        function access() {
+          let input = document.getElementById("access").value;
+
+
+          const cyrb53 = (str, seed = 0) => {
+            let h1 = 0xdeadbeef ^ seed,
+              h2 = 0x41c6ce57 ^ seed;
+            for (let i = 0, ch; i < str.length; i++) {
+              ch = str.charCodeAt(i);
+              h1 = Math.imul(h1 ^ ch, 2654435761);
+              h2 = Math.imul(h2 ^ ch, 1597334677);
+            }
+
+            h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+            h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+
+            return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+          };
+
+          let inputHash = (`cyrb53('a') -> ${cyrb53(input)}`);
+
+          function home() {
+            localStorage.clear();
+            sessionStorage.setItem("verified", 'true');
+            var verified = sessionStorage.getItem("verified");
+            location.href = "/../";
+          }
+
+          if (inputHash == verifyHash) {
+            home();
+          } else {
+            document.getElementById('access').value = '';
+            document.getElementsByName('verify')[0].placeholder='Incorrect password!';
+          }
+        }
+
+
+      </script>
+    </div>
+  </div>
+
+</body>
+
+</html>
