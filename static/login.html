@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Login to iframe</title>
+  <title>Login to A-ENGINE</title>
   <meta name="viewport" content="width=device-width">
   <link rel="icon"
     href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKpJREFUOE9jZGBg+M9AAWCkmgEwZ4BMBIH/DAxGUCYviGZkYDgIFVeF8m9DaYgXqGHAZ6iJYBth4D8DgzeU/QVKw9SdQ3cBxQY8RbaJkYFBHeq1SKhNy7FFFjwW/jMwUGYAkp9PQ200hbogFSrHB6U/QeVno4QBxQb8Z2DYhBbvjmix0QC1EUzDAHIYUGzAUmQXMDAwgKMVC/0V2SXILqDMAGxxTIwYxbkRAORwTgGX++ZOAAAAAElFTkSuQmCC">
@@ -46,8 +45,8 @@
     <div class='center' style='width:315px;padding:4px'>
       <center style="font-family:monospace">A-ENGINE now needs a password for protection against the district. Contact the owner of A-ENGINE to get an access key. Thank you for visiting.
         <br></br>
-
-      <input type=password id="access" name = 'verify' placeholder="Access Key" onchange="access()"><br>
+      <script>var maintenance = true;</script>
+      <input type=password id="access" name = 'verify' placeholder="Access Key" onchange="if (maintenance === false) { access(); } else { alert('A-ENGINE is under maintenance! Check again in a day or two.'); }"><br>
       </center>
       <script>
         sessionStorage.setItem("verified", 'false');
