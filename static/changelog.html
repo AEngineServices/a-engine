@@ -73,6 +73,13 @@ background-color: #000
 </head>
 <body class="dark:bg-dark-400;">
 <nav>
+<script>
+var verified = sessionStorage.getItem("verified");
+if (verified == 'true') {
+} else {
+    location.href = "https://aengine.onrender.com/login.html";
+}
+</script>  
     <h2>A-ENGINE</h2>
     <ul>
         <li>
