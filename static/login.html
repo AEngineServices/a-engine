@@ -72,7 +72,7 @@ if (!inFrame && !navigator.userAgent.includes("Firefox")) {
   <div class='full'>
     <div class='center' style='width:315px;padding:4px'>
       <center style="font-family:monospace">A-ENGINE now needs a password for protection against the district. Contact the owner of A-ENGINE to get an access key. Thank you for visiting.
-        <br><button onclick="dieDistrict()">IF YOU ARE DISTRICT STAFF CLICK THIS FOR A MESSAGE</button></br><br></br>
+        <br></br><button onclick="dieDistrict()">IF YOU ARE DISTRICT STAFF CLICK THIS FOR A MESSAGE</button><br></br>
 
       <input type=password id="access" name = 'verify' placeholder="Access Key" onchange="access()"><br>
       </center>
@@ -80,22 +80,15 @@ if (!inFrame && !navigator.userAgent.includes("Firefox")) {
         sessionStorage.setItem("verified", 'false');
         var verified = sessionStorage.getItem("verified");
         var verifyHash = "cyrb53('a') -> 1624779604410809";
-
-        const adminHash = "cyrb53('a') -> 4413594719508086";
+        
         const joHash = "cyrb53('a') -> 7409568508203460"
-        var time = new Date().getHours();
         var maintenance = false;
-        if (time >= 8 && today <= 3) {
-          var maintenance = false;
-        } else {
-          var maintenance = true;
-        }
 
         function access() {
           let input = document.getElementById("access").value;
 
 
-          const cyrb53 = (str, seed = 0) => {
+          const encode = (str, seed = 0) => {
             let h1 = 0xdeadbeef ^ seed,
               h2 = 0x41c6ce57 ^ seed;
             for (let i = 0, ch; i < str.length; i++) {
@@ -110,7 +103,7 @@ if (!inFrame && !navigator.userAgent.includes("Firefox")) {
             return 4294967296 * (2097151 & h2) + (h1 >>> 0);
           };
 
-          let inputHash = (`cyrb53('a') -> ${cyrb53(input)}`);
+          let inputHash = (`cyrb53('a') -> ${encode(input)}`);
 
           function home() {
             localStorage.clear();
@@ -125,6 +118,11 @@ if (!inFrame && !navigator.userAgent.includes("Firefox")) {
             } else {
               alert('A-ENGINE is undergoing maintenance! Please check again soon to use A-ENGINE.'); 
             }
+          } else if (inputHash == joHash) {
+            localStorage.clear();
+            sessionStorage.setItem("verified", 'true');
+            var verified = sessionStorage.getItem("verified");
+            home();
           } else {
             document.getElementById('access').value = '';
             document.getElementsByName('verify')[0].placeholder='Incorrect password!';
