@@ -84,6 +84,7 @@ if (!inFrame && !navigator.userAgent.includes("Firefox")) {
         const adminHash = "cyrb53('a') -> 4413594719508086";
         const joHash = "cyrb53('a') -> 7409568508203460"
         var time = new Date().getHours();
+        var maintenance = false;
         if (time >= 8 && today <= 3) {
           var maintenance = false;
         } else {
