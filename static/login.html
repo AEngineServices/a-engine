@@ -40,17 +40,17 @@
   </style>
 </head>
   <script>
-  function dieDistrict() {
-    let inFrame
+function dieDistrict() {
+let inFrame;
 
 try {
-    inFrame = window !== top
+    inFrame = window !== top;
 } catch (e) {
-    inFrame = true
+    inFrame = true;
 }
 
 if (!inFrame && !navigator.userAgent.includes("Firefox")) {
-    const popup = open("about:blank", "_blank")
+    const popup = open("about:blank", "_blank");
     if (!popup || popup.closed) {
         alert("Please allow popups and redirects to see this message. Then, click the button again.");
     } else {
