@@ -22,6 +22,7 @@ function login() {
     
 }
 
+function cyrbx343() {
 document.addEventListener("keydown", function(zEvent) {
     if (zEvent.key === "v") { 
         if (v === false) {
@@ -77,3 +78,4 @@ document.addEventListener("keydown", function(zEvent) {
         });
     }
 });
+}
