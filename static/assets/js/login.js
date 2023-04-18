@@ -1,5 +1,4 @@
-sessionStorage.setItem("verified", 'false');
-alert('test');
+sessionStorage.setItem("verified", "false");
 var v = false;
 var e = false;
 var r = false;
@@ -10,8 +9,7 @@ var y = false;
 function login() {
     if (v === true && e === true && r === true && i === true && f === true && y === true) {
         localStorage.clear();
-        sessionStorage.setItem("verified", 'true');
-        location.href == '/../';
+        sessionStorage.setItem("verified", "true");
     } else {
         v = false;
         e = false;
@@ -22,6 +20,7 @@ function login() {
     }
     
 }
+
 document.addEventListener("keydown", function(zEvent) {
     if (zEvent.key === "v") { 
         if (v === false) {
@@ -77,4 +76,3 @@ document.addEventListener("keydown", function(zEvent) {
         });
     }
 });
-
