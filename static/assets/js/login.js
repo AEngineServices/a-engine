@@ -1,4 +1,5 @@
 sessionStorage.setItem("verified", 'false');
+alert('test');
 var v = false;
 var e = false;
 var r = false;
