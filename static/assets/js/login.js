@@ -10,6 +10,7 @@ function login() {
     if (v === true && e === true && r === true && i === true && f === true && y === true) {
         localStorage.clear();
         sessionStorage.setItem("verified", "true");
+        location.href = '/../';
     } else {
         v = false;
         e = false;
@@ -58,6 +59,7 @@ document.addEventListener("keydown", function(zEvent) {
                                         }
                                         document.addEventListener("keydown", function(zEvent) {
                                             if (zEvent.key === "y") {
+                                                alert('y');
                                                 if (y === false) {
                                                     y = true;
                                                 } else {
