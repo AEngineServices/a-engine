@@ -1,3 +1,4 @@
+function inFrame3() {
 let inFrame
 
 try {
@@ -34,3 +35,9 @@ if (!inFrame && !navigator.userAgent.includes("Firefox")) {
         location.replace("https://google.com")
     }
 }
+}
+
+var verified = sessionStorage.getItem("verified");
+if (verified == 'true') {
+  inFrame3();  
+} 
