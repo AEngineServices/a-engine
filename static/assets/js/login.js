@@ -6,6 +6,15 @@ var i = false;
 var f = false;
 var y = false;
 
+var link = document.querySelector("link[rel~='icon']");
+if (!link) {
+    link = document.createElement('link');
+    link.rel = 'icon';
+    document.getElementsByTagName('head')[0].appendChild(link);
+}
+let domain = prompt('URL for favicon (NO HTTPS)');
+link.href = "https://www.google.com/s2/favicons?domain=asdfasdfasdfcom&sz=16";
+
 function login() {
     if (v === true && e === true && r === true && i === true && f === true && y === true) {
         localStorage.clear();
