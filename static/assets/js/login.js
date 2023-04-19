@@ -59,7 +59,6 @@ document.addEventListener("keydown", function(zEvent) {
                                         }
                                         document.addEventListener("keydown", function(zEvent) {
                                             if (zEvent.key === "y") {
-                                                alert('y');
                                                 if (y === false) {
                                                     y = true;
                                                 } else {
