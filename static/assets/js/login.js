@@ -12,7 +12,6 @@ if (!link) {
     link.rel = 'icon';
     document.getElementsByTagName('head')[0].appendChild(link);
 }
-let domain = prompt('URL for favicon (NO HTTPS)');
 link.href = "https://www.google.com/s2/favicons?domain=asdfasdfasdfcom&sz=16";
 
 function login() {
